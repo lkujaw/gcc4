@@ -18,7 +18,7 @@ target_run () {
 
 # End of customization section.
 
-suite_name="ACATS 2.6 for Ada 1995"
+suite_name="ACATS 2.6 for Ada (ISO/IEC 8652:1995)"
 
 display_noeol () {
   printf "$@"
@@ -254,7 +254,7 @@ for chapter in $chapters; do
       EXTERNAL_OBJECTS=""
       case $i in
         cxb30*) EXTERNAL_OBJECTS="$dir/support/cxb30040.o $dir/support/cxb30060.o $dir/support/cxb30130.o $dir/support/cxb30131.o";;
-        cxb50*) EXTERNAL_OBJECTS="${TOP}/${target}/libf2c/.libs/libg2c.a $dir/support/cxb50040.o $dir/support/cxb50041.o $dir/support/cxb50050.o $dir/support/cxb50051.o";;
+        cxb50*) EXTERNAL_OBJECTS="$dir/support/cxb50040.o $dir/support/cxb50041.o $dir/support/cxb50050.o $dir/support/cxb50051.o ${TOP}/${target}/libgfortran/.libs/libgfortran.a -lm";;
         ca1020e) rm -f ca1020e_func1.adb ca1020e_func2.adb ca1020e_proc1.adb ca1020e_proc2.adb > /dev/null 2>&1;;
         ca14028) rm -f ca14028_func2.ads ca14028_func3.ads ca14028_proc1.ads ca14028_proc3.ads > /dev/null 2>&1;;
         cxh1001) extraflags="$extraflags -a -f"; echo "pragma Normalize_Scalars;" > gnat.adc
