@@ -352,7 +352,11 @@ int flag_var_tracking_assignments = AUTODETECT_VALUE;
 int flag_var_tracking_assignments_toggle = 0;
 
 /* Type of stack check.  */
-enum stack_check_type flag_stack_check = NO_STACK_CHECK;
+enum stack_check_type flag_stack_check = STACK_CHECK_BUILTIN
+					 ? FULL_BUILTIN_STACK_CHECK
+					 : STACK_CHECK_STATIC_BUILTIN
+					   ? STATIC_BUILTIN_STACK_CHECK
+					   : GENERIC_STACK_CHECK;
 
 /* True if the user has tagged the function with the 'section'
    attribute.  */
