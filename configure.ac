@@ -30,7 +30,7 @@ m4_include([ltversion.m4])
 m4_include([lt~obsolete.m4])
 
 AC_INIT(move-if-change)
-AC_PREREQ(2.64)
+AC_PREREQ(2.65)
 AC_DISABLE_OPTION_CHECKING
 
 progname=$0
@@ -3224,15 +3224,15 @@ NCN_STRICT_CHECK_TOOLS(RANLIB, ranlib, true)
 NCN_STRICT_CHECK_TOOLS(STRIP, strip, true)
 NCN_STRICT_CHECK_TOOLS(WINDRES, windres)
 NCN_STRICT_CHECK_TOOLS(WINDMC, windmc)
-NCN_STRICT_CHECK_TOOLS(OBJCOPY, objcopy)
-NCN_STRICT_CHECK_TOOLS(OBJDUMP, objdump)
+NCN_STRICT_CHECK_TOOLS(OBJCOPY, objcopy gobjcopy)
+NCN_STRICT_CHECK_TOOLS(OBJDUMP, objdump gobjdump)
 AC_SUBST(CC)
 AC_SUBST(CXX)
 AC_SUBST(CFLAGS)
 AC_SUBST(CXXFLAGS)
 
 # Target tools.
-AC_ARG_WITH([build-time-tools], 
+AC_ARG_WITH([build-time-tools],
   [  --with-build-time-tools=PATH
                           use given path to find target tools during the build],
   [case x"$withval" in
