@@ -1001,7 +1001,7 @@ lang_checks += check-gnat
 check-ada: check-acats check-gnat
 check-ada-subtargets: check-acats-subtargets check-gnat-subtargets
 
-ACATSDIR = $(TESTSUITEDIR)/ada/acats
+ACATSDIR = $(TESTSUITEDIR)/ada/1995
 
 check_acats_targets = $(patsubst %,check-acats%, 0 1 2)
 
