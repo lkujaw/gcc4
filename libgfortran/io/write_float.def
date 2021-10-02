@@ -27,7 +27,7 @@ see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
 #include "config.h"
 
 typedef enum
-{ S_NONE, S_MINUS, S_PLUS }
+{ WS_NONE, WS_MINUS, WS_PLUS }
 sign_t;
 
 /* Given a flag that indicates if a value is negative or not, return a
@@ -36,22 +36,22 @@ sign_t;
 static sign_t
 calculate_sign (st_parameter_dt *dtp, int negative_flag)
 {
-  sign_t s = S_NONE;
+  sign_t s = WS_NONE;
 
   if (negative_flag)
-    s = S_MINUS;
+    s = WS_MINUS;
   else
     switch (dtp->u.p.sign_status)
       {
       case SIGN_SP:	/* Show sign. */
-	s = S_PLUS;
+	s = WS_PLUS;
 	break;
       case SIGN_SS:	/* Suppress sign. */
-	s = S_NONE;
+	s = WS_NONE;
 	break;
       case SIGN_S:	/* Processor defined. */
       case SIGN_UNSPECIFIED:
-	s = options.optional_plus ? S_PLUS : S_NONE;
+	s = options.optional_plus ? WS_PLUS : WS_NONE;
 	break;
       }
 
@@ -409,11 +409,11 @@ output_float (st_parameter_dt *dtp, const fnode *f, char *buffer, size_t size,
 
   /* Pick a field size if none was specified.  */
   if (w <= 0)
-    w = nbefore + nzero + nafter + (sign != S_NONE ? 2 : 1);
+    w = nbefore + nzero + nafter + (sign != WS_NONE ? 2 : 1);
   
   /* Work out how much padding is needed.  */
   nblanks = w - (nbefore + nzero + nafter + edigits + 1);
-  if (sign != S_NONE)
+  if (sign != WS_NONE)
     nblanks--;
 
   if (dtp->u.p.g0_no_blanks)
@@ -452,9 +452,9 @@ output_float (st_parameter_dt *dtp, const fnode *f, char *buffer, size_t size,
     }
 
   /* Output the initial sign (if any).  */
-  if (sign == S_PLUS)
+  if (sign == WS_PLUS)
     *(out++) = '+';
-  else if (sign == S_MINUS)
+  else if (sign == WS_MINUS)
     *(out++) = '-';
 
   /* Output an optional leading zero.  */

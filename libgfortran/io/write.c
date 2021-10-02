@@ -590,7 +590,7 @@ write_decimal (st_parameter_dt *dtp, const fnode *f, const char *source,
   sign = calculate_sign (dtp, n < 0);
   if (n < 0)
     n = -n;
-  nsign = sign == S_NONE ? 0 : 1;
+  nsign = sign == WS_NONE ? 0 : 1;
   
   /* conv calls itoa which sets the negative sign needed
      by write_integer. The sign '+' or '-' is set below based on sign
@@ -632,13 +632,13 @@ write_decimal (st_parameter_dt *dtp, const fnode *f, const char *source,
 
   switch (sign)
     {
-    case S_PLUS:
+    case WS_PLUS:
       *p++ = '+';
       break;
-    case S_MINUS:
+    case WS_MINUS:
       *p++ = '-';
       break;
-    case S_NONE:
+    case WS_NONE:
       break;
     }
 
