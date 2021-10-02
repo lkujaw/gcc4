@@ -100,6 +100,14 @@ private
    --  string containing the switch, and Ptr points just past the switch
    --  character. Max is the maximum alllowed value of Ptr.
 
+   procedure Scan_Boolean
+     (Switch_Chars : String;
+      Max          : Integer;
+      Ptr          : in out Integer;
+      Default      : Boolean;
+      Result       : out Boolean;
+      Switch       : Character);
+
    procedure Scan_Nat
      (Switch_Chars : String;
       Max          : Integer;
